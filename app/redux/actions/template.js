@@ -5,7 +5,6 @@ export const types = {
 
 export const actionCreators = {
     getTitle: (text) => {
-        console.log(1 + " " + text);
         return {type: types.GET_TITLE, payload: text}
     }
 }

@@ -1,33 +1,13 @@
-import React, {PropTypes} from 'react';
-import {Button, Text, View} from 'react-native';
-import {styles} from '../styles/main';
-import {connect} from "react-redux";
-import {actionCreators} from "../redux/actions/template";
+import {
+    createStackNavigator,
+    createAppContainer
+} from 'react-navigation';
+import HomeScreen from './home'
 
-class App extends React.Component {
-    componentWillMount() {
-        const {dispatch} = this.props;
-        dispatch(actionCreators.getTitle("Puck"));
-    }
+const AppNavigator = createStackNavigator({
+    Home: { screen: HomeScreen },
+});
 
-    render() {
-        const {title} = this.props;
+const AppContainer = createAppContainer(AppNavigator);
 
-        return (
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app! :P</Text>
-                <Text>{title}</Text>
-                <Button onPress={() => {
-                    const {dispatch} = this.props;
-                    dispatch(actionCreators.getTitle("Puck" + Math.random()));
-                }} title="Click"/>
-            </View>
-        );
-    }
-}
-
-const mapStateToProps = (store) => ({
-    title: store.templateReducer.title,
-})
-
-export default connect(mapStateToProps)(App);
+export default AppContainer;

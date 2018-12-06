@@ -9,13 +9,11 @@ export const templateReducer = (state = initialState, action) => {
 
     switch (type) {
         case types.GET_TITLE: {
-            console.log(2 + " " + payload);
             return {
                 ...state,
             }
         }
         case types.GET_TITLE_SUCCESS: {
-            console.log(4);
             return {
                 ...state,
                 title: payload
